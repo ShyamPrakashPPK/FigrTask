@@ -1,113 +1,221 @@
+"use client"
 import Image from 'next/image'
+import Link from 'next/link'
+import VanillaTilt from 'vanilla-tilt'
+import { useEffect } from 'react'
+import App from "./parallaxText";
+import TextReveal from './components/TextReveal'
+import HeroSection from './components/HeroSection'
+import ParallaxSection from './components/ParallaxSection'
+
 
 export default function Home() {
+  useEffect(() => {
+    const cards = document.querySelectorAll(".card");
+    const cardsArray = Array.from(cards) as HTMLElement[];
+    VanillaTilt.init(cardsArray, {
+      max: 4,
+      speed: 5,
+      glare: true,
+      'max-glare': 0
+    });
+  }, []);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+
+    <main className=" ">
+
+      {/* card section 
+            cursor hovereffects, on scroll disapplear */}
+
+      <HeroSection />
+
+
+
+      {/* featured and seen in */}
+      <section className='pt-52 pb-14'>
+        <h3 className='text-center text-white font-bold text-6xl py-10' >Featured and Seen in</h3>
+        <div className='flex flex-row gap-5 place-content-center'>
+
+          <div className='bg-[#191919] rounded-xl h-1/2 p-5'>
+            <Image className='md:w-[300px]' height={200} width={150} src={'/images/logo-bi.svg'} alt={'cursor'}></Image>
+          </div>
+
+          <div className='bg-[#191919] rounded-xl h-1/2 p-5'>
+            <Image className='md:w-[300px]' height={200} width={150} src={'/images/logo-bi.svg'} alt={'cursor'}></Image>
+          </div>
+
+          <div className='bg-[#191919] rounded-xl h-1/2 p-5'>
+            <Image className='md:w-[300px]' height={200} width={150} src={'/images/logo-bi.svg'} alt={'cursor'}></Image>
+          </div>
+
+          <div className='bg-[#191919] rounded-xl h-1/2 p-5'>
+            <Image className='md:w-[300px]' height={200} width={150} src={'/images/logo-bi.svg'} alt={'cursor'}></Image>
+          </div>
+
+          <div className='bg-[#191919] rounded-xl h-1/2 p-5'>
+            <Image className='md:w-[300px]' height={200} width={150} src={'/images/logo-bi.svg'} alt={'cursor'}></Image>
+          </div>
+
         </div>
-      </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        <div className='flex  mt-32 place-content-center border border-stone-900 mx-20 '></div>
+        <div className='h-screen'></div>
+      </section>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      {/* parallax effect area */}
+
+      <section className='md:px-[200px] pt-20 pb-96'>
+        <ParallaxSection />
+      </section>
+
+
+      {/* text reveal area */}
+      <div className='h-screen'></div>
+      <TextReveal />
+
+
+
+      {/* three card section one full on top and two on bottom */}
+      <section className='px-[400px]'>
+        <div className='grid grid-cols-4 gap-3 '>
+          <div className='col-span-4 '>
+            <div className='bg-[#101010] rounded-xl h-full p-10 '>
+              <Image className='' height={1000} width={1500} src={'/images/sectionImage1.png'} alt={'cursor'}></Image>
+            </div>
+          </div>
+          <div className='col-span-2  hover:scale-105 transition-all duration-500'>
+            <div className='bg-[#101010] rounded-xl h-full p-10 '>
+              <Image className='' height={400} width={550} src={'/images/sectionImage2.png'} alt={'cursor'}></Image>
+            </div>
+          </div>
+          <div className='col-span-2  hover:scale-105 transition-all duration-500'>
+            <div className='bg-[#101010] rounded-xl h-full p-10 '>
+              <Image className='' height={400} width={550} src={'/images/sectionImage3.png'} alt={'cursor'}></Image>
+            </div>
+          </div>
+        </div>
+        <div className='flex  mt-32 place-content-center border border-stone-900 mx-20'></div>
+
+      </section>
+
+
+
+      {/* text static and card scroll section*/}
+      {/* <ScrollCards imgUrls={['/images/10.png']} sectionTitles={[]}/> */}
+      <section className='p-[400px]'>
+        <div className="grid grid-cols-2">
+          <div className=" col-span-1 p-20">
+            <div className="text w-full h-screen ">
+              <div className='flex flex-row'>
+                <div className='flex flex-row text-center items-center text-3xl font-bold text-[#3c3297]' ><Image height={50} width={50} src={'/images/star.png'} alt={'cursor'} />Workflow</div>
+              </div>
+              <div className='text-[75px] font-extrabold'>Create at the speed of thought.</div>
+              <div className='text-2xl text-gray-500 font-light pt-5'>Focus on your getting your thoughts out and crafting the best message while Chronicle does the heavy lifting for you</div>
+            </div>
+          </div>
+
+          <div className='col-span-1  max-h-[600px]'>
+            <div className="flex flex-col overflow-scroll">
+              <div className='bg-[#191919] rounded-xl h-96 m-10 '>
+                <div className=" h-[550px] w-[400px] ">
+
+                </div>
+              </div>
+              <div className='bg-[#191919] rounded-xl h-96 m-10'>
+                <div className=" h-[550px] w-[400px] ">
+
+                </div>
+              </div>
+              <div className='bg-[#191919] rounded-xl h-96 m-10'>
+                <div className=" h-[550px] w-[400px] ">
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+
+
+      </section>
+
+
+
+
+    
+
+      <section className='p-10'>
+        <div className='bg-[#191919] w-full  rounded-2xl'>
+          <div className="grid grid-cols-2">
+            <div className=" col-span-1 p-10">
+              <div className="text w-full ">
+                <div className='flex flex-row'>
+                  <div className='flex flex-row text-center items-center text-3xl font-bold text-[#3c3297]' ><Image height={50} width={50} src={'/images/star.png'} alt={'cursor'} />Workflow</div>
+                </div>
+                <div className='text-[75px] font-extrabold'>Present anywhere. Anytime.</div>
+                <div className='text-2xl text-stone-500 font-light pt-5'>Transform your stories into a bite-sized format tailored for mobile. Quickly browse the summary and dive deeper when needed.</div>
+              </div>
+            </div>
+
+
+            <div className='col-span-1 p-20'>
+              <div className="flex flex-col ">
+                <div className='card bg-[#6a6a6a] rounded-xl h-96 m-10 '>
+                  <div className=" h-[550px] w-[400px] ">
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </section>
+
+
+
+      <section className='p-10 mt-32'>
+
+        <div className="text-center w-full ">
+          <div className='flex text-center flex-row'>
+            <div className='flex flex-row  items-center  text-3xl font-bold text-[#3c3297]' ><Image height={50} width={50} src={'/images/star.png'} alt={'cursor'} />Templates</div>
+          </div>
+          <div className='text-[70px] font-bold'>Start closer to the finish line with templates made by industry experts</div>
+        </div>
+
+        <div className='grid grid-cols-1 md:grid-cols-3'>
+          <div className='card col-span-1 bg-[#191919] rounded-xl h-96 m-10 '>
+            <div className=" h-[550px] w-[400px] ">
+
+            </div>
+          </div>
+          <div className='card col-span-1 bg-[#191919] rounded-xl h-96 m-10 '>
+            <div className=" h-[550px] w-[400px] ">
+
+            </div>
+          </div>
+          <div className='card col-span-1 bg-[#191919] rounded-xl h-96 m-10 '>
+            <div className=" h-[550px] w-[400px] ">
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+
+      <App />
+
+      <div className="h-screen"></div>
+
+
     </main>
   )
 }
